@@ -1,5 +1,5 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
+Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 11
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "blazey.windsor", "scr\blazey.windsor\blazey.windsor.csproj", "{26A4F597-469D-42E7-8C69-C468B2D1D607}"
 EndProject

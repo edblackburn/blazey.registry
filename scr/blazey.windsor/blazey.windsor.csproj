@@ -43,6 +43,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Registrar.cs" />
+    <Compile Include="RegistrarResolver.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

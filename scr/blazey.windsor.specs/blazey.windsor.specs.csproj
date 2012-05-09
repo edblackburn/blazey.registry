@@ -55,7 +55,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Stub.cs" />
+    <Compile Include="when_registrar_candidates_are_querried.cs" />
+    <Compile Include="when_registrar_is_resolved_by_container.cs" />
     <Compile Include="when_windsor_has_array_sub_resolver_registered.cs" />
+    <Compile Include="when_windsor_has_spy_sub_resolvers_they_must_be_called.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\blazey.windsor\blazey.windsor.csproj">

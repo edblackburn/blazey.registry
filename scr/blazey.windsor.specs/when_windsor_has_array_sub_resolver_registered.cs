@@ -15,7 +15,8 @@ namespace blazey.windsor.specs
                 _container.Kernel.Resolver.AddSubResolver(new ArrayResolver(_container.Kernel));
                 _container.Register(
                     Classes.FromThisAssembly().BasedOn<Stub.IAmAnInterface>().WithService.FirstInterface(),
-                    Component.For<Stub.ComponentWithArrayDependency>());
+                    Component.For<Stub.ComponentWithArrayDependency>()
+                    );
             };
 
         private Because of = () => _exception = Catch.Exception(

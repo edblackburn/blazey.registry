@@ -12,7 +12,7 @@ namespace blazey.windsor.specs
                 _container = new WindsorContainer();
                 _container.Kernel.Resolver.AddSubResolver(new RegistrarResolver(_container.Kernel));
                 _container.Register(
-                    Classes.FromThisAssembly().BasedOn<Stub.IAmAnInterface>().WithService.FirstInterface(),
+                    Classes.FromThisAssembly().BasedOn<Stub.IAmAnInterface>().WithService.AllInterfaces(),
                     Component.For<Stub.ComponentWithRegistrarDependency>());
             };
 

@@ -23,9 +23,7 @@ namespace blazey.windsor
 
             var itemType = GetItemType(dependency.TargetItemType);
 
-            return itemType != null &&
-                   HasParameter(dependency) == false &&
-                   CanSatisfy(itemType);
+            return itemType != null && _kernel.HasComponent(itemType);
         }
 
         public object Resolve(CreationContext context, ISubDependencyResolver contextHandlerResolver,
@@ -39,7 +37,7 @@ namespace blazey.windsor
             return Activator.CreateInstance(typeToConstruct, candidates);
         }
 
-        public virtual Type GetItemType(Type targetItemType)
+        private static Type GetItemType(Type targetItemType)
         {
             if (targetItemType == null)
             {
@@ -57,14 +55,6 @@ namespace blazey.windsor
             return targetItemType.GetGenericArguments()[0];
         }
 
-        public virtual bool HasParameter(DependencyModel dependency)
-        {
-            return dependency.Parameter != null;
-        }
 
-        public virtual bool CanSatisfy(Type itemType)
-        {
-            return _kernel.HasComponent(itemType);
-        }
     }
 }

@@ -1,35 +1,19 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
 
 namespace blazey.windsor
 {
-    public class Registrar<TService>
-
+    public class Registrar<TInstance>
     {
-        private readonly IEnumerable<TService> _candidates;
+        private readonly IEnumerable<TInstance> _candidates;
 
-        public Registrar(IEnumerable<TService> candidates)
+        public Registrar(IEnumerable<TInstance> candidates)
         {
             _candidates = candidates;
         }
 
-        public TService Get<TSpecification>(TSpecification specification)
+        public TInstance Get<TParameterKey>(TParameterKey parameterKey)
         {
-            
-            var method = new Candidate().SpecificationMethod(typeof (TService), typeof (TSpecification));
-
-            const BindingFlags bindingFlags = BindingFlags.Public | BindingFlags.Instance | BindingFlags.InvokeMethod;
-
-            var item = _candidates.FirstOrDefault(candidate =>
-                {
-                    var type = candidate.GetType();
-                    
-                    return (bool)type.InvokeMember(method.Name, bindingFlags, Type.DefaultBinder, candidate, new object[] {specification});
-                });
-
-            return item;
+            return new Specification<TInstance>().Instance(_candidates, parameterKey);
         }
     }
 }

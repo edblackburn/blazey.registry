@@ -8,13 +8,13 @@ namespace blazey.windsor.specs
     {
         private Establish context = () =>
             {
-                _candidate = new Candidate();
+                _specificationMember = new Specification<>();
                 _registrarType = typeof (Stub.ISatisfied);
                 _specificationParameterType = typeof (string);
             };
 
         private Because of = () => _exception = Catch.Exception(
-            () => _specificationMethod = _candidate.SpecificationMethod(_registrarType, _specificationParameterType));
+            () => _specificationMethod = _specificationMember.Instance(_registrarType, _specificationParameterType));
 
         private It should_not_have_null_specification_method =
             () => _specificationMethod.ShouldNotBeNull();
@@ -29,7 +29,7 @@ namespace blazey.windsor.specs
             () => _exception.ShouldBeNull();
 
         private static MethodInfo _specificationMethod;
-        private static Candidate _candidate;
+        private static Specification<> _specification;
         private static Type _registrarType;
         private static Type _specificationParameterType;
         private static Exception _exception;

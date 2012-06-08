@@ -8,7 +8,7 @@ namespace blazey.windsor.specs
         {
             void SomeBehaviour(object[] foos, object[] bars);
         }
-        
+
         public interface ICanSatisfy
         {
             bool CanSatisfy(string param);
@@ -71,15 +71,19 @@ namespace blazey.windsor.specs
             }
         }
 
-        public abstract class StubBase 
+        public abstract class StubBase
         {
+            public void Behaviour()
+            {
+            }
+
             public bool IsSatisfiedBy(string param)
             {
                 throw new NotImplementedException();
             }
         }
 
-        public class IsSatisfiedByWithIsMatchAndMatch : StubBase, IIsMatch, IMatch 
+        public class IsSatisfiedByWithIsMatchAndMatch : StubBase, IIsMatch, IMatch
         {
             public bool IsMatch(string param)
             {

@@ -56,6 +56,7 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Stub.cs" />
+    <Compile Include="when_item_is_requested_from_registrar.cs" />
     <Compile Include="when_registrar_item_has_can_satisfy_member.cs" />
     <Compile Include="when_registrar_is_resolved_by_container.cs" />
     <Compile Include="when_registrar_item_has_a_base_class.cs" />

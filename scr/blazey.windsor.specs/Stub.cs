@@ -71,7 +71,7 @@ namespace blazey.windsor.specs
             }
         }
 
-        public abstract class StubBase
+        public abstract class IsSatisfiedByBase
         {
             public void Behaviour()
             {
@@ -83,7 +83,7 @@ namespace blazey.windsor.specs
             }
         }
 
-        public class IsSatisfiedByWithIsMatchAndMatch : StubBase, IIsMatch, IMatch
+        public class IsMatchAndMatch : IsSatisfiedByBase, IIsMatch, IMatch
         {
             public bool IsMatch(string param)
             {

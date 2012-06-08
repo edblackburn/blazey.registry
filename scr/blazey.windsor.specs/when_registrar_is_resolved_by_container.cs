@@ -28,4 +28,7 @@ namespace blazey.windsor.specs
         private static IWindsorContainer _container;
         private static Stub.ComponentWithRegistrarDependency _componentWithRegistrarDependency;
     }
+
+
+
 }

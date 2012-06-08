@@ -9,7 +9,7 @@ namespace blazey.windsor.specs
         private Establish context = () =>
             {
                 _candidate = new Candidate();
-                _registrarType = typeof (Stub.IsSatisfiedByWithIsMatchAndMatch);
+                _registrarType = typeof (Stub.IsMatchAndMatch);
                 _specificationParameterType = typeof (string);
             };
 

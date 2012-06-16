@@ -1,6 +1,7 @@
 using System;
-using System.Reflection;
+using System.Collections.Generic;
 using Machine.Specifications;
+using blazey.windsor.specs.doubles;
 
 namespace blazey.windsor.specs
 {
@@ -8,30 +9,20 @@ namespace blazey.windsor.specs
     {
         private Establish context = () =>
             {
-                _specificationMember = new Specification<>();
-                _registrarType = typeof (Stub.IsMatchAndMatch);
-                _specificationParameterType = typeof (string);
+                _builder = MockServiceBuilder<Stub.IIsSatisfiedByIsMatchAndMatch>.WithKey("key");
             };
 
         private Because of = () => _exception = Catch.Exception(
-            () => _specificationMethod = _specificationMember.Instance(_registrarType, _specificationParameterType));
+            () => _instance = _builder.ResolveService().SelectedItem);
 
-        private It should_not_have_null_specification_method =
-            () => _specificationMethod.ShouldNotBeNull();
-
-        private It should_be_is_satisfied_by_member_name =
-            () => _specificationMethod.Name.ShouldEqual("IsSatisfiedBy");
-
-        private It should_have_a_first_parameter_named_param =
-            () => _specificationMethod.GetParameters()[0].Name.ShouldEqual("param");
+        private It should_be_is_satisfied_is_true =
+            () => _instance.ShouldBeOfType<Stub.IsSatisfiedParamIsKey>();
 
         private It should_not_throw =
             () => _exception.ShouldBeNull();
 
-        private static MethodInfo _specificationMethod;
-        private static Specification<> _specification;
-        private static Type _registrarType;
-        private static Type _specificationParameterType;
         private static Exception _exception;
+        private static Stub.IIsSatisfiedByIsMatchAndMatch _instance;
+        private static MockServiceBuilder<Stub.IIsSatisfiedByIsMatchAndMatch> _builder;
     }
 }

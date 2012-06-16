@@ -3,6 +3,7 @@ using Castle.MicroKernel.Registration;
 using Castle.MicroKernel.Resolvers.SpecializedResolvers;
 using Castle.Windsor;
 using Machine.Specifications;
+using blazey.windsor.specs.doubles;
 using It = Machine.Specifications.It;
 
 namespace blazey.windsor.specs

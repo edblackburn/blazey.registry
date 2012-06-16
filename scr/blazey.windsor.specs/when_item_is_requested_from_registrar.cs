@@ -2,6 +2,8 @@
 using Castle.MicroKernel.Registration;
 using Castle.Windsor;
 using Machine.Specifications;
+using blazey.windsor.specs.doubles;
+using blazey.windsor.specs.doubles.predicates;
 
 namespace blazey.windsor.specs
 {
@@ -12,79 +14,24 @@ namespace blazey.windsor.specs
                 var container = new WindsorContainer();
                 container.Kernel.Resolver.AddSubResolver(new RegistrarResolver(container.Kernel));
                 container.Register(
-                    AllTypes.FromThisAssembly().BasedOn<IItem>().WithService.AllInterfaces(),
-                    Component.For<Harness>());
+                    AllTypes.FromThisAssembly().BasedOn<IItemWithBehaviour>().WithService.AllInterfaces(),
+                    Component.For<MockService<IItemWithBehaviour>>());
 
-                _harness = container.Resolve<Harness>();
+                _mockService = container.Resolve<MockService<IItemWithBehaviour>>();
 
             };
 
         private Because of = () => _exception = Catch.Exception(
-            () => _item = _harness.SelectedItem);
+            () => _itemWithBehaviour = _mockService.SelectItem("key"));
 
-        private It should_be_stub_2 =
-            () => _item.ShouldBeOfType<StubItem2>();
+        private It should_be_is_satisfied_true =
+            () => _itemWithBehaviour.ShouldBeOfType<IsSatisfiedByTrue>();
 
         private It should_not_throw =
             () => _exception.ShouldBeNull();
 
-        private static IItem _item;
+        private static IItemWithBehaviour _itemWithBehaviour;
         private static Exception _exception;
-        private static Harness _harness;
-    }
-
-    public class StubItem3 : IItem
-    {
-        public bool IsSatisfiedBy(string param)
-        {
-            return false;
-        }
-
-        public void Behaviour()
-        {
-            throw new NotImplementedException();
-        }
-    }
-
-    public class StubItem2 : IItem
-    {
-        public bool IsSatisfiedBy(string param)
-        {
-            return true;
-        }
-
-        public void Behaviour()
-        {
-            throw new NotImplementedException();
-        }
-    }
-
-
-    public class StubItem1 : IItem
-    {
-        public bool IsSatisfiedBy(string param)
-        {
-            return false;
-        }
-
-        public void Behaviour()
-        {
-            throw new NotImplementedException();
-        }
-    }
-
-    public class Harness
-    {
-        public Harness(Registrar<IItem> registrar)
-        {
-            SelectedItem = registrar.Get("key");
-        }
-
-        public IItem SelectedItem { get; private set; }
-    }
-
-    public interface IItem : Stub.IIsSatisfiedBy
-    {
-        void Behaviour();
+        private static MockService<IItemWithBehaviour> _mockService;
     }
 }

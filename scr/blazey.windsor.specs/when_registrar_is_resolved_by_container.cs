@@ -2,6 +2,7 @@ using System;
 using Castle.MicroKernel.Registration;
 using Castle.Windsor;
 using Machine.Specifications;
+using blazey.windsor.specs.doubles;
 
 namespace blazey.windsor.specs
 {
@@ -12,8 +13,8 @@ namespace blazey.windsor.specs
                 _container = new WindsorContainer();
                 _container.Kernel.Resolver.AddSubResolver(new RegistrarResolver(_container.Kernel));
                 _container.Register(
-                    Classes.FromThisAssembly().BasedOn<Stub.IAmAnInterface>().WithService.AllInterfaces(),
-                    Component.For<Stub.ComponentWithRegistrarDependency>());
+                    Classes.FromThisAssembly().BasedOn<IAmAnInterface>().WithService.AllInterfaces(),
+                    Component.For<ComponentWithRegistrarDependency>());
             };
 
         private Because of = () => _exception = Catch.Exception(

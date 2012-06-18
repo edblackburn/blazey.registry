@@ -2,55 +2,41 @@ namespace blazey.windsor.specs.doubles.predicates
 {
     public abstract class MockCandidateSpecification : IsSatisfiedByBase, IMockCandidateSpecification
     {
-        public string ExpectedParam { get; private set; }
+        private readonly string _param;
 
         protected MockCandidateSpecification(string param)
         {
-            ExpectedParam = param;
+            _param = param;
         }
 
         public override bool IsSatisfiedBy(string param)
         {
-            return param == ExpectedParam;
+            return param == _param;
         }
 
         public bool IsMatch(string param)
         {
-            return param == ExpectedParam;
+            return param == _param;
         }
 
         public bool Match(string param)
         {
-            return param == ExpectedParam;
+            return param == _param;
         }
 
         public bool Satisfied(string param)
         {
-            return param == ExpectedParam;
+            return param == _param;
         }
 
         public bool CanSatisfy(string param)
         {
-            return param == ExpectedParam;
+            return param == _param;
         }
 
         public bool Satisfy(string param)
         {
-            return param == ExpectedParam;
-        }
-    }
-
-    public class MockCandidateSpecificationWhereParamIsEmpty : MockCandidateSpecification
-    {
-        public MockCandidateSpecificationWhereParamIsEmpty() : base(string.Empty)
-        {
-        }
-    }
-
-    public class MockCandidateSpecificationWhereParamIsKey : MockCandidateSpecification
-    {
-        public MockCandidateSpecificationWhereParamIsKey() : base("key")
-        {
+            return param == _param;
         }
     }
 }

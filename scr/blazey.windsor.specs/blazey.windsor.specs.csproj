@@ -63,6 +63,8 @@
     <Compile Include="doubles\predicates\IMockCandidateSpecification.cs" />
     <Compile Include="doubles\predicates\IItemWithBehaviour.cs" />
     <Compile Include="doubles\predicates\IMatch.cs" />
+    <Compile Include="doubles\predicates\MockCandidateSpecificationWhereParamIsEmpty.cs" />
+    <Compile Include="doubles\predicates\MockCandidateSpecificationWhereParamIsKey.cs" />
     <Compile Include="doubles\StubInterfaceImpl2.cs" />
     <Compile Include="doubles\predicates\IsSatisfiedByBase.cs" />
     <Compile Include="doubles\predicates\MockCandidateSpecification.cs" />

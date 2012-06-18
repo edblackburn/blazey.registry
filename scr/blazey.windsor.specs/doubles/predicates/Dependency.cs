@@ -1,10 +1,10 @@
 namespace blazey.windsor.specs.doubles.predicates
 {
-    public abstract class MockCandidateSpecification : IsSatisfiedByBase, IMockCandidateSpecification
+    public abstract class Dependency : IsSatisfiedByBase, IDependency
     {
         private readonly string _param;
 
-        protected MockCandidateSpecification(string param)
+        protected Dependency(string param)
         {
             _param = param;
         }
@@ -38,5 +38,11 @@ namespace blazey.windsor.specs.doubles.predicates
         {
             return param == _param;
         }
+
+        public void DoSomething()
+        {
+
+        }
+
     }
 }

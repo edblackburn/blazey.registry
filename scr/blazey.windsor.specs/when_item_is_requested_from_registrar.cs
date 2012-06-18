@@ -11,27 +11,25 @@ namespace blazey.windsor.specs
     {
         private Establish context = () =>
             {
-                var container = new WindsorContainer();
-                container.Kernel.Resolver.AddSubResolver(new RegistrarResolver(container.Kernel));
-                container.Register(
-                    AllTypes.FromThisAssembly().BasedOn<IItemWithBehaviour>().WithService.AllInterfaces(),
-                    Component.For<MockService<IItemWithBehaviour>>());
-
-                _mockService = container.Resolve<MockService<IItemWithBehaviour>>();
-
+                _container = new WindsorContainer();
+                _container.Kernel.Resolver.AddSubResolver(new RegistrarResolver(_container.Kernel));
+                _container.Register(
+                    AllTypes.FromThisAssembly().BasedOn<IMockCandidateSpecification>().WithServiceAllInterfaces(),
+                    Component.For<MockService>());
             };
 
         private Because of = () => _exception = Catch.Exception(
-            () => _itemWithBehaviour = _mockService.SelectItem("key"));
+            () => _instance = _container.Resolve<MockService>().SelectItem("key"));
 
-        private It should_be_is_satisfied_true =
-            () => _itemWithBehaviour.ShouldBeOfType<IsSatisfiedByTrue>();
+        private It should_be_of_type_mock_candidate_specification_where_param_is_key =
+            () => _instance.ShouldBeOfType<MockCandidateSpecificationWhereParamIsKey>();
 
         private It should_not_throw =
             () => _exception.ShouldBeNull();
 
-        private static IItemWithBehaviour _itemWithBehaviour;
         private static Exception _exception;
-        private static MockService<IItemWithBehaviour> _mockService;
+        private static IMockCandidateSpecification _instance;
+        private static IWindsorContainer _container;
+
     }
 }

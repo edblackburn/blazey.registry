@@ -1,15 +1,17 @@
+using blazey.windsor.specs.doubles.predicates;
+
 namespace blazey.windsor.specs.doubles
 {
-    public class MockService<TComponent>
+    public class MockService
     {
-        public Registrar<TComponent> Registrar { get; private set; }
+        public Registrar<IMockCandidateSpecification> Registrar { get; private set; }
 
-        public MockService(Registrar<TComponent> registrar)
+        public MockService(Registrar<IMockCandidateSpecification> registrar)
         {
             Registrar = registrar;
         }
 
-        public TComponent SelectItem<TParam>(TParam param)
+        public IMockCandidateSpecification SelectItem(string param)
         {
             return Registrar.Get(param);
         }

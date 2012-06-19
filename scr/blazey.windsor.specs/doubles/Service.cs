@@ -15,5 +15,10 @@ namespace blazey.windsor.specs.doubles
         {
             return Registrar.Get(param);
         }
+
+        public IDependency SelectOrDefaultItem(string param)
+        {
+            return Registrar.GetOrDefault(param, () => new DefaultDependency());
+        }
     }
 }

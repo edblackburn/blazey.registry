@@ -1,11 +1,7 @@
 namespace blazey.windsor.specs.doubles.predicates
 {
-    public abstract class IsSatisfiedByBase
+    public abstract class IsSatisfiedByBase : IIsSatisfiedBy
     {
-        public void Behaviour()
-        {
-        }
-
         public abstract bool IsSatisfiedBy(string param);
     }
 }

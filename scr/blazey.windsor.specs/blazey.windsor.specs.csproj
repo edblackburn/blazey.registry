@@ -54,23 +54,21 @@
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="doubles\predicates\ISatisfied.cs" />
-    <Compile Include="doubles\predicates\ISatisfy.cs" />
+    <Compile Include="doubles\predicates\DefaultDependency.cs" />
     <Compile Include="doubles\IStubInterface.cs" />
-    <Compile Include="doubles\predicates\ICanSatisfy.cs" />
-    <Compile Include="doubles\predicates\IIsMatch.cs" />
     <Compile Include="doubles\predicates\IIsSatisfiedBy.cs" />
-    <Compile Include="doubles\predicates\IDependency.cs" />
+    <Compile Include="doubles\IDependency.cs" />
     <Compile Include="doubles\predicates\IMatch.cs" />
-    <Compile Include="doubles\predicates\DependencyWhereParamIsEmpty.cs" />
-    <Compile Include="doubles\predicates\DependencyWhereParamIsKey.cs" />
+    <Compile Include="doubles\predicates\DependencyY.cs" />
     <Compile Include="doubles\StubInterfaceImpl2.cs" />
     <Compile Include="doubles\predicates\IsSatisfiedByBase.cs" />
-    <Compile Include="doubles\predicates\Dependency.cs" />
+    <Compile Include="doubles\predicates\DependencyX.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="doubles\Service.cs" />
     <Compile Include="doubles\StubInterfaceImpl1.cs" />
-    <Compile Include="when_item_is_requested_from_registrar.cs" />
+    <Compile Include="doubles\ServiceBuilder.cs" />
+    <Compile Include="when_registrar_invokes_specification_to_resolve_an_instance.cs" />
+    <Compile Include="when_registrar_invokes_specification_to_resolve_an_instance_with_a_default.cs" />
     <Compile Include="when_registrar_item_has_no_specification_method.cs" />
   </ItemGroup>
   <ItemGroup>

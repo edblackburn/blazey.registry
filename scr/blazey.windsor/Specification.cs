@@ -5,7 +5,7 @@ using System.Reflection;
 
 namespace blazey.windsor
 {
-    public class Specification<TInstance>
+    public class Specification<TInstance> where TInstance : class 
     {
 
         public TInstance Instance<TParameterKey>(IEnumerable<TInstance> candidates, TParameterKey parameterKey)
@@ -30,8 +30,7 @@ namespace blazey.windsor
                 .SelectMany(m => m)
                 .FirstOrDefault();
 
-#warning requires a 'defensive' unit tests
-            if (null == method) return default(TInstance); //invariable null
+            if (null == method) return default(TInstance);
 
             const BindingFlags bindingFlags = BindingFlags.Public | BindingFlags.Instance | BindingFlags.InvokeMethod;
 

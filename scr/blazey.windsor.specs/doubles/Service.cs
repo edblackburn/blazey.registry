@@ -18,7 +18,7 @@ namespace blazey.windsor.specs.doubles
 
         public IDependency GetOrDefaultItem(string param)
         {
-            return Registrar.TryGet(param, () => new DefaultDependency());
+            return Registrar.Get(param, () => new DefaultDependency());
         }
     }
 }

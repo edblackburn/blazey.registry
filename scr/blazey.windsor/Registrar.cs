@@ -17,11 +17,12 @@ namespace blazey.windsor
             return new Specification<TInstance>().Instance(_candidates, parameterKey);
         }
 
-        public TInstance GetOrDefault<TParameterKey>(TParameterKey parameterKey, Func<TInstance> defaultFactory)
+        public TInstance TryGet<TParameterKey>(TParameterKey parameterKey, Func<TInstance> defaultFactory)
         {
             if (null == defaultFactory) throw new ArgumentNullException("defaultFactory");
 
-            return new Specification<TInstance>().Instance(_candidates, parameterKey) ?? defaultFactory();
+            return Get(parameterKey) ?? defaultFactory();
         }
+
     }
 }

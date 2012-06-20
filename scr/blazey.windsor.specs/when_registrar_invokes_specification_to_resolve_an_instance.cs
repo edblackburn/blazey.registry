@@ -1,6 +1,4 @@
 ﻿using System;
-using Castle.MicroKernel.Registration;
-using Castle.Windsor;
 using Machine.Specifications;
 using blazey.windsor.specs.doubles;
 using blazey.windsor.specs.doubles.predicates;
@@ -12,12 +10,12 @@ namespace blazey.windsor.specs
         private Establish context = () => _service = new ServiceBuilder();
 
         private Because of = () => _exception = Catch.Exception(
-            () => _instance = _service.SelectItem("x"));
+            () => _instance = _service.Get("x"));
 
-        private It should_be_of_type_satisfied_dependency =
+        private It should_be_of_type_dependency_x =
             () => _instance.ShouldBeOfType<DependencyX>();
 
-        private It should_not_be_of_type_un_satisfied_dependency =
+        private It should_not_be_of_type_dependency_y =
             () => _instance.ShouldNotBeOfType(typeof (DependencyY));
 
         private It should_not_throw =

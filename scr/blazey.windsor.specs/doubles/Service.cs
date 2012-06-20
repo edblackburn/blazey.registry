@@ -11,14 +11,14 @@ namespace blazey.windsor.specs.doubles
             Registrar = registrar;
         }
 
-        public IDependency SelectItem(string param)
+        public IDependency Get(string param)
         {
             return Registrar.Get(param);
         }
 
-        public IDependency SelectOrDefaultItem(string param)
+        public IDependency GetOrDefaultItem(string param)
         {
-            return Registrar.GetOrDefault(param, () => new DefaultDependency());
+            return Registrar.TryGet(param, () => new DefaultDependency());
         }
     }
 }

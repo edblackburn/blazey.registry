@@ -4,7 +4,7 @@ using blazey.registry.specs.doubles;
 
 namespace blazey.registry.specs
 {
-    public class when_registrar_item_has_no_specification_method
+    public class when_specification_does_not_match_any_criteria
     {
         private Establish context = () =>
             {
@@ -15,7 +15,7 @@ namespace blazey.registry.specs
         private Because of = () => _exception = Catch.Exception(
             () => _instance = _registrar.Get(string.Empty));
 
-        private It should_be_null =
+        private It should_return_null =
             () => _instance.ShouldBeNull();
 
         private It should_not_throw =

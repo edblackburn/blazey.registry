@@ -16,7 +16,7 @@ namespace blazey.registry.specs.doubles
             return Registrar.Get(param);
         }
 
-        public IDependency GetOrDefaultItem(string param)
+        public IDependency GetOrCreate(string param)
         {
             return Registrar.Get(param, () => new DefaultDependency());
         }

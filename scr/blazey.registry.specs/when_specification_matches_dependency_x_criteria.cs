@@ -3,19 +3,23 @@ using Machine.Specifications;
 using blazey.registry.specs.doubles;
 using blazey.registry.specs.doubles.predicates;
 
-namespace blazey.registry.specs.windsor
+namespace blazey.registry.specs
 {
-    public class when_registrar_invokes_specification_to_resolve_an_instance
+    public class when_specification_matches_dependency_x_criteria
     {
-        private Establish context = () => _service = ServiceBuilder.WithWindsor().Build();
+        private Establish context = () =>
+            {
+                var stubs = new IDependency[] {new DependencyX(), new DependencyY()};
+                _service = new Service(new Registrar<IDependency>(stubs));
+            };
 
         private Because of = () => _exception = Catch.Exception(
             () => _instance = _service.Get("x"));
 
-        private It should_be_of_type_dependency_x =
+        private It should_return_type_dependency_x =
             () => _instance.ShouldBeOfType<DependencyX>();
 
-        private It should_not_be_of_type_dependency_y =
+        private It should_not_return_type_dependency_y =
             () => _instance.ShouldNotBeOfType(typeof (DependencyY));
 
         private It should_not_throw =

@@ -8,10 +8,10 @@ namespace blazey.registry.specs
     public class when_specification_matches_dependency_x_criteria
     {
         private Establish context = () =>
-            {
-                var stubs = new IDependency[] {new DependencyX(), new DependencyY()};
-                _service = new Service(new Registrar<IDependency>(stubs));
-            };
+                                        {
+                                            var stubs = new IDependency[] {new DependencyX(), new DependencyY()};
+                                            _service = new Service(new Registrar<IDependency>(stubs));
+                                        };
 
         private Because of = () => _exception = Catch.Exception(
             () => _instance = _service.Get("x"));

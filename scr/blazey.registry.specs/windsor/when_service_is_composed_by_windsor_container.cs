@@ -1,6 +1,4 @@
 ﻿using System;
-using Castle.MicroKernel.Registration;
-using Castle.Windsor;
 using Machine.Specifications;
 using blazey.registry.specs.doubles;
 
@@ -9,18 +7,14 @@ namespace blazey.registry.specs.windsor
     public class when_service_is_composed_by_windsor_container
     {
         private Establish context = () =>
-            {
-                var container = new WindsorContainer();
-                //Add registrar sub resolver
-                container.Kernel.Resolver.AddSubResolver(new RegistrarResolver(container.Kernel));
+                                        {
+                                            var container = new ContainerBuilder()
+                                                .WithAllInstancesBasedOn<IDependency>()
+                                                .WithAnInstanceOf<Service>()
+                                                .Build();
 
-                //register all dependencies and service
-                container.Register(
-                    AllTypes.FromThisAssembly().BasedOn<IDependency>().WithServiceAllInterfaces(),
-                    Component.For<Service>());
-
-                _service = container.Resolve<Service>();
-            };
+                                            _service = container.Resolve<Service>();
+                                        };
 
         private Because of = () => _exception = Catch.Exception(
             () => _registrar = _service.Registrar);
@@ -37,6 +31,5 @@ namespace blazey.registry.specs.windsor
         private static Exception _exception;
         private static Registrar<IDependency> _registrar;
         private static Service _service;
- 
     }
 }

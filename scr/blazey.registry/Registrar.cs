@@ -14,7 +14,7 @@ namespace blazey.registry
 
         public TInstance Get<TParameterKey>(TParameterKey parameterKey)
         {
-            return new Specification<TInstance>().Instance(_candidates, parameterKey);
+            return new CandidateMap<TInstance>().Instance(_candidates, parameterKey);
         }
 
         public TInstance Get<TParameterKey>(TParameterKey parameterKey, Func<TInstance> createIfNotFound)

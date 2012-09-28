@@ -5,7 +5,7 @@ using System.Reflection;
 
 namespace blazey.registry
 {
-    public class Specification<TInstance> where TInstance : class 
+    internal class CandidateMap<TInstance> where TInstance : class 
     {
 
         public TInstance Instance<TParameterKey>(IEnumerable<TInstance> candidates, TParameterKey parameterKey)

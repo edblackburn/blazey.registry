@@ -1,90 +1,38 @@
-blazey.windsor
+blazey.registry
 ===
-
-Facilitate applying IoC easier with Castle Windsor
-
-Registrar
-===
-
 Why?
 ===
-Favouring composition over inheritance and replace conditional with polymorphism are object-orientated programming techniques. This C# Windsor SubResolver is provided to help a programmer achieve these goals with low friction.
-The registrar pattern can easily be abused, if perceived as a large bag of global behaviour. However in conjunction with the specification pattern it can be a powerful yet simple mechanism for selecting behaviour at runtime. In conjunction with a container (in this example Castle Windsor) this can be implemented trivially.
-
-Take this simple contract:
+Applying some recommended practices such as favour polymorphism over conditions can sometimes sounds pithy but how might one actually practices this? Blazey.registry extends Castle Windsor to automatically apply the specification with a predicate parameter if you inject all candidates like so:
 
 ```c#
-public interface IDependency
+
+public class CarQuery
 {
-    void DoSomething();
-    bool IsSatisfiedBy(string key);
-}
-```
+    private readonly Registrar<ICar> _carRegistry;
 
-An array of the dependency is injected into a service. When the serviceDoSomething() method is invoked, the service iterates through the dependency array elements invoking the specification predicate (IsSatisfied method). The first element to return true invokes the DoSomething method on the selected element.
-
-```c#
-public class Service 
-{
-    private readonly IDependency[] _services;
-
-    public Service(IDependency[] services)
+    public CarQuery(Registrar<ICar> carRegistry)
     {
-        _services = services;
+        _carRegistry = carRegistry;
     }
 
-    public void DoSomething()
+    public ICar GetRedCar()
     {
-        var selected = _services.First(service => service.IsSatisfiedBy("key"));
-        
-        selected.DoSomething();          
- 	}
-
-}
-```
-
-To inject arrays in Castle Windsor one adds the ArrayResolver sub resolver like so:
-```c#
-container.Kernel.Resolver.AddSubResolver(new ArrayResolver(container.Kernel));
-```
-The dependencies need registering like so:
-```c#
-container.Register(
-    AllTypes.FromThisAssembly().BasedOn<IDependency>().WithServiceAllInterfaces(),
-    Component.For<Service>());
-```
-As you can see this code is somewhat naïve. The code needs to be resilient to side effects such as what if no dependency elements satisfy the predicate? What if one wanted to null coalesce to a default implementation to take advantage of the null object pattern.
-```c#
-public void DoSomething()
-{
-    var selected = _services.FirstOrDefault(service => service.IsSatisfiedBy("key")) ?? new NullObjectDependency();
-    
-    selected.DoSomething();
-}
-
-public class NullObjectDependency : IDependency
-{
-    public void DoSomething() 
-    {
-        //null object do nothing.
-    }
-
-    public bool IsSatisfiedBy(string key)
-    {
-        return false;
+        return _carRegistry.Get(Color.Red);
     }
 }
 ```
-Blazey.Windsor allows one to take advantage of these patterns trivially.
+What is this doing?
+===
+It is a custom sub resolver that injects all instances of a service returning the first match for the predicate parameter. It uses reflection to identify a member in your interface that matches a whitelist of predicate names by order: 
+issatisfiedby, satisfied, cansatisfy, satisfy, ismatch, match
 
-Usage
-==
-
+How do I use it?
+===
 Add the registrar sub resolver:
 ```c#
 container.Kernel.Resolver.AddSubResolver(new RegistrarResolver(container.Kernel));
 ```
-Register dependencies and service:
+Register dependencies and services as normal:
 ```c#
 _container.Register(
     AllTypes.FromThisAssembly().BasedOn<IDependency>().WithServiceAllInterfaces(),
@@ -104,9 +52,3 @@ public class Service
     .
 }
 ```
-The Registrar type has behaviour to assist us in selecting the correct dependency:
-```c#
-IDependency selectedDependency = registrar.Get<string>(param);
-```
-This action iterates over all container resolved instances of type IDependency. If an IDependency method contains a method that has one parameter, whose type matches the Registrar::Get<T> open generic parameter and whose method name can be homogenised to match any of this sequence ordered in preference: issatisfiedby, satisfied, cansatisfy, satisfy, ismatch or match.  
-

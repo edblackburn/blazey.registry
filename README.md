@@ -21,6 +21,32 @@ public class CarQuery
     }
 }
 ```
+
+```c#
+public class Ferrari : ICar
+{
+    public bool IsSatisfiedBy(Color color)
+    {
+        return color == Color.Red;
+    }
+
+    public void Drive()
+    {
+    }
+}
+
+public class Lamborghini : ICar
+{
+    public bool IsSatisfiedBy(Color color)
+    {
+        return color == Color.Yellow;
+    }
+
+    public void Drive()
+    {
+    }
+}
+```
 What is this doing?
 ===
 It is a custom sub resolver that injects all instances of a service returning the first match for the predicate parameter. It uses reflection to identify a member in your interface that matches a whitelist of predicate names by order: 
@@ -28,9 +54,9 @@ issatisfiedby, satisfied, cansatisfy, satisfy, ismatch, match
 
 How do I use it?
 ===
-Add the registrar sub resolver:
+Add the registry faciltiy:
 ```c#
-container.Kernel.Resolver.AddSubResolver(new RegistrarResolver(container.Kernel));
+container.AddFacility<RegistryFacility>();
 ```
 Register dependencies and services as normal:
 ```c#

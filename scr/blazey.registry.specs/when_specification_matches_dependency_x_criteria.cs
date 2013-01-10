@@ -10,7 +10,7 @@ namespace blazey.registry.specs
         private Establish context = () =>
                                         {
                                             var stubs = new IDependency[] {new DependencyX(), new DependencyY()};
-                                            _service = new Service(new Registrar<IDependency>(stubs));
+                                            _service = new Service(new Registry<IDependency>(stubs));
                                         };
 
         private Because of = () => _exception = Catch.Exception(

@@ -17,19 +17,19 @@ namespace blazey.registry.specs.windsor
                                         };
 
         private Because of = () => _exception = Catch.Exception(
-            () => _registrar = _service.Registrar);
+            () => _registry = _service.Registry);
 
         private It should_be_registrar_of_idependency =
-            () => _registrar.ShouldBeOfType<Registrar<IDependency>>();
+            () => _registry.ShouldBeOfType<Registry<IDependency>>();
 
         private It should_not_be_null =
-            () => _registrar.ShouldNotBeNull();
+            () => _registry.ShouldNotBeNull();
 
         private It should_not_throw =
             () => _exception.ShouldBeNull();
 
         private static Exception _exception;
-        private static Registrar<IDependency> _registrar;
+        private static Registry<IDependency> _registry;
         private static Service _service;
     }
 }

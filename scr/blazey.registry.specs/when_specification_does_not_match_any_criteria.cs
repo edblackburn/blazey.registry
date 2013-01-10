@@ -9,11 +9,11 @@ namespace blazey.registry.specs
         private Establish context = () =>
             {
                 var stubs = new IStubInterface[] {new StubInterfaceImpl1(), new StubInterfaceImpl2()};
-                _registrar = new Registrar<IStubInterface>(stubs);
+                _registry = new Registry<IStubInterface>(stubs);
             };
 
         private Because of = () => _exception = Catch.Exception(
-            () => _instance = _registrar.Get(string.Empty));
+            () => _instance = _registry.Get(string.Empty));
 
         private It should_return_null =
             () => _instance.ShouldBeNull();
@@ -23,6 +23,6 @@ namespace blazey.registry.specs
 
         private static Exception _exception;
         private static IStubInterface _instance;
-        private static Registrar<IStubInterface> _registrar;
+        private static Registry<IStubInterface> _registry;
     }
 }

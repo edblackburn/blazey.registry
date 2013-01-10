@@ -6,7 +6,7 @@ namespace blazey.registry
     {
         protected override void Init()
         {
-            Kernel.Resolver.AddSubResolver(new RegistrarResolver(Kernel));
+            Kernel.Resolver.AddSubResolver(new RegistryResolver(Kernel));
         }
     }
 }

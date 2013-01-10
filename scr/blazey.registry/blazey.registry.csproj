@@ -25,7 +25,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>bin\</OutputPath>
+    <OutputPath>bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -45,8 +45,8 @@
   <ItemGroup>
     <Compile Include="CandidateMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Registrar.cs" />
-    <Compile Include="RegistrarResolver.cs" />
+    <Compile Include="Registry.cs" />
+    <Compile Include="RegistryResolver.cs" />
     <Compile Include="RegistryFacility.cs" />
   </ItemGroup>
   <ItemGroup>

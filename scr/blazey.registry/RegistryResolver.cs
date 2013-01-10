@@ -5,11 +5,11 @@ using Castle.MicroKernel.Context;
 
 namespace blazey.registry
 {
-    public class RegistrarResolver : ISubDependencyResolver
+    public class RegistryResolver : ISubDependencyResolver
     {
         private readonly IKernel _kernel;
 
-        public RegistrarResolver(IKernel kernel)
+        public RegistryResolver(IKernel kernel)
         {
             _kernel = kernel;
         }
@@ -19,7 +19,7 @@ namespace blazey.registry
         {
             if (dependency.TargetItemType == null) return false;
             if (dependency.TargetItemType.IsGenericType &&
-                dependency.TargetItemType.GetGenericTypeDefinition() != typeof (Registrar<>)) return false;
+                dependency.TargetItemType.GetGenericTypeDefinition() != typeof (Registry<>)) return false;
 
             var itemType = GetItemType(dependency.TargetItemType);
 
@@ -32,7 +32,7 @@ namespace blazey.registry
             var candidateType = GetItemType(dependency.TargetItemType);
             var candidates = _kernel.ResolveAll(candidateType);
 
-            var typeToConstruct = typeof (Registrar<>).GetGenericTypeDefinition().MakeGenericType(new[] {candidateType});
+            var typeToConstruct = typeof (Registry<>).GetGenericTypeDefinition().MakeGenericType(new[] {candidateType});
 
             return Activator.CreateInstance(typeToConstruct, candidates);
         }

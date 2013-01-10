@@ -1,0 +1,1 @@
+nuget pack blazey.registry.dll.nuspec

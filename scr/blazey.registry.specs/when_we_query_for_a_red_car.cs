@@ -25,9 +25,9 @@ namespace blazey.registry.specs
 
         public class CarQuery
         {
-            private readonly Registrar<ICar> _carRegistry;
+            private readonly Registry<ICar> _carRegistry;
 
-            public CarQuery(Registrar<ICar> carRegistry)
+            public CarQuery(Registry<ICar> carRegistry)
             {
                 _carRegistry = carRegistry;
             }

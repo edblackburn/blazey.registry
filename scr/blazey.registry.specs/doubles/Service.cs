@@ -4,21 +4,21 @@ namespace blazey.registry.specs.doubles
 {
     public class Service
     {
-        public Registrar<IDependency> Registrar { get; private set; }
+        public Registry<IDependency> Registry { get; private set; }
 
-        public Service(Registrar<IDependency> registrar)
+        public Service(Registry<IDependency> registry)
         {
-            Registrar = registrar;
+            Registry = registry;
         }
 
         public IDependency Get(string param)
         {
-            return Registrar.Get(param);
+            return Registry.Get(param);
         }
 
         public IDependency GetOrCreate(string param)
         {
-            return Registrar.Get(param, () => new DefaultDependency());
+            return Registry.Get(param, () => new DefaultDependency());
         }
     }
 }

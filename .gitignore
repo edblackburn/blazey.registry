@@ -4,7 +4,6 @@
 
 #Nuget
 *.nupkg
-*.nuspec
 
 #Visual Studio files
 *.[Oo]bj

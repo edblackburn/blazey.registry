@@ -49,8 +49,8 @@ public class Lamborghini : ICar
 ```
 What is this doing?
 ===
-It is a custom sub resolver that injects all instances of a service returning the first match for the predicate parameter. It uses reflection to identify a member in your interface that matches a whitelist of predicate names by order: 
-issatisfiedby, satisfied, cansatisfy, satisfy, ismatch, match
+All registered instances of the generic parameter (i.e. ICar) are resolved. The first instance to return true if a member that 
+homogenizes to: issatisfiedby, satisfied, cansatisfy, satisfy, ismatch, match is returned by the registry.
 
 How do I use it?
 ===

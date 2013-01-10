@@ -5,9 +5,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "blazey.registry", "scr\blaz
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "blazey.registry.specs", "scr\blazey.registry.specs\blazey.registry.specs.csproj", "{41C8EF5F-9641-49A5-9599-0C8D7823E1CD}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "git", "git", "{2963A39C-8182-453E-945C-414D688C64DD}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "registry", "registry", "{2963A39C-8182-453E-945C-414D688C64DD}"
 	ProjectSection(SolutionItems) = preProject
-		.gitignore = .gitignore
+		LICENSE-2.0.txt = LICENSE-2.0.txt
 		README.md = README.md
 	EndProjectSection
 EndProject

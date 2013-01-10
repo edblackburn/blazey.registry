@@ -24,7 +24,7 @@ namespace blazey.registry.specs.doubles
         {
             var container = new WindsorContainer();
 
-            container.Kernel.Resolver.AddSubResolver(new RegistrarResolver(container.Kernel));
+            container.AddFacility<RegistryFacility>();
 
             container.Register(_registrations.ToArray());
 

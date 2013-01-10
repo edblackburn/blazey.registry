@@ -47,6 +47,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Registrar.cs" />
     <Compile Include="RegistrarResolver.cs" />
+    <Compile Include="RegistryFacility.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

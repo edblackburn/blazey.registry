@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<package>
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <authors>"$$author"</authors>
+    <owners>Blazey Software Ltd</owners>
+    <licenseUrl>http://www.apache.org/licenses/LICENSE-2.0.txt</licenseUrl>
+    <projectUrl>https://github.com/edblackburn/blazey.registry</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>$description$</description>
+    <releaseNotes />
+    <copyright>Copyright Blazey Software Ltd 2013</copyright>
+    <tags>castle windsor di dependencyInjection ioc inversionOfControl registry specification facility blazey</tags>
+    <dependencies>
+      <dependency id="Castle.Windsor" version="(2.0.0.0,)" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="scr\blazey.registry\bin\Release\$id$.dll" target="lib\net40" />
+    <file src="scr\blazey.registry\bin\Release\$id$.pdb" target="lib\net40" />
+    <file src="scr\blazey.registry\bin\Release\Castle.Windsor.dll" target="lib\net40" />
+    <file src="scr\blazey.registry\bin\Release\Castle.Core.dll" target="lib\net40" />
+  </files>
+</package>

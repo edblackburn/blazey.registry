@@ -1,6 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "blazey.registry", "scr\blazey.registry\blazey.registry.csproj", "{26A4F597-469D-42E7-8C69-C468B2D1D607}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "blazey.registry.specs", "scr\blazey.registry.specs\blazey.registry.specs.csproj", "{41C8EF5F-9641-49A5-9599-0C8D7823E1CD}"
@@ -9,6 +9,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "registry", "registry", "{29
 	ProjectSection(SolutionItems) = preProject
 		LICENSE-2.0.txt = LICENSE-2.0.txt
 		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{3FC8B88E-5E80-494C-9D1D-1C65AA6F1ACF}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
 EndProject
 Global

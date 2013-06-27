@@ -9,7 +9,7 @@ namespace blazey.registry.specs.doubles
         private readonly List<IRegistration> _registrations = new List<IRegistration>();
 
         public ContainerBuilder WithAllInstancesBasedOn<T>()
-        {
+        { 
             _registrations.Add(AllTypes.FromThisAssembly().BasedOn<T>().WithServiceAllInterfaces());
             return this;
         }

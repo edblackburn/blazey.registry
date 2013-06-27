@@ -7,7 +7,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyCompany("ed.blackburn")]
 [assembly: AssemblyProduct("blazey.windsor")]
 [assembly: AssemblyCopyright("Copyright © Blazey Software Ltd 2012, 2013")]
-[assembly: AssemblyCulture("en-gb")]
+[assembly: AssemblyCulture("")]
 [assembly: ComVisible(false)]
 [assembly: AssemblyVersion("0.0.0.1")]
 [assembly: AssemblyFileVersion("0.0.0.1")]

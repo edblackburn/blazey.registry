@@ -20,6 +20,6 @@
   <files>
     <file src="LICENSE-2.0.txt" />
     <file src="README.md" />
-    <file src="scr\blazey.registry\bin\Release\blazey.registry.pdb" target="lib\40\" />
+    <file src="scr\blazey.registry\bin\Release\blazey.registry.pdb" target="lib\net40\" />
   </files>
 </package>

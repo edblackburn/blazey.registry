@@ -78,3 +78,5 @@ public class Service
     .
 }
 ```
+
+(c) Blazey Software Ltd
